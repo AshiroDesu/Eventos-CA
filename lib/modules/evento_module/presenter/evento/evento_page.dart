@@ -15,7 +15,6 @@ class EventoPage extends StatefulWidget {
 }
 
 class _EventoPageState extends ModularState<EventoPage, EventoMobx> {
-  TextEditingController textSend = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +30,6 @@ class _EventoPageState extends ModularState<EventoPage, EventoMobx> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Search'),
               ),
-            ),
-            TextField(
-              controller: textSend,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Send'),
             ),
             Expanded(
               child: Observer(builder: (_) {
@@ -58,7 +52,10 @@ print(item);
                   return _buildList(state.list);
                 } else {
                   return Container(
-                    child: Text('Vazio'),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 8.0, left: 8.0, top: 8.0),
+                      child: Text('Procure algo'),
+                    ),
                   );
                 }
               }),
@@ -66,7 +63,10 @@ print(item);
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {},
+          onPressed: () async {
+            Modular.to.navigate('/CreatePage');
+          },
+          child: Icon(Icons.add),
         ));
   }
 

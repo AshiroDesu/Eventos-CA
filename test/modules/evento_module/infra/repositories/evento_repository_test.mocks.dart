@@ -33,4 +33,14 @@ class MockEventoDatasource extends _i1.Mock implements _i2.EventoDatasource {
               returnValue:
                   Future<List<_i4.EventoModel>>.value(<_i4.EventoModel>[]))
           as _i3.Future<List<_i4.EventoModel>>);
+  @override
+  _i3.Future<void> createSucess(_i4.EventoModel? model) =>
+      (super.noSuchMethod(Invocation.method(#createSucess, [model]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<void> deleteSucess(String? id) =>
+      (super.noSuchMethod(Invocation.method(#deleteSucess, [id]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
 }

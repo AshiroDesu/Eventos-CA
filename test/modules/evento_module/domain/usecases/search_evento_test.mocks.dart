@@ -40,4 +40,16 @@ class MockEventoRepository extends _i1.Mock implements _i3.EventoRepository {
                   Future<_i2.Either<_i5.FailureSearch, List<_i6.Evento>>>.value(
                       _FakeEither_0<_i5.FailureSearch, List<_i6.Evento>>()))
           as _i4.Future<_i2.Either<_i5.FailureSearch, List<_i6.Evento>>>);
+  @override
+  _i4.Future<_i2.Either<_i5.FailurePost, void>> create(_i6.Evento? model) =>
+      (super.noSuchMethod(Invocation.method(#create, [model]),
+              returnValue: Future<_i2.Either<_i5.FailurePost, void>>.value(
+                  _FakeEither_0<_i5.FailurePost, void>()))
+          as _i4.Future<_i2.Either<_i5.FailurePost, void>>);
+  @override
+  _i4.Future<_i2.Either<_i5.FailureDelete, void>> delete(String? id) =>
+      (super.noSuchMethod(Invocation.method(#delete, [id]),
+              returnValue: Future<_i2.Either<_i5.FailureDelete, void>>.value(
+                  _FakeEither_0<_i5.FailureDelete, void>()))
+          as _i4.Future<_i2.Either<_i5.FailureDelete, void>>);
 }

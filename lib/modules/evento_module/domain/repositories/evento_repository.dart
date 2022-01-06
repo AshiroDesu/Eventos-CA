@@ -4,4 +4,6 @@ import 'package:eventos_ca/modules/evento_module/domain/errors/errors.dart';
 
 abstract class EventoRepository {
   Future<Either<FailureSearch, List<Evento>>> search(String? searchText);
+  Future<Either<FailurePost, void>> create(Evento model);
+  Future<Either<FailureDelete, void>> delete(String id);
 }
