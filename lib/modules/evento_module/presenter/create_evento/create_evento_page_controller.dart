@@ -10,8 +10,8 @@ class CreateEventoValueNotifier {
   Future<CreateState> makePost(String text) async {
     if (text != '') {
       var result = await createByText.post(setCreateText(text));
-      return setState(result.fold(
-          (l) => CreateError(l), (r) => const CreateSuccessState(true)));
+      return result.fold(
+          (l) => CreateError(l), (r) => const CreateSuccessState(true));
     } else {
       return setState(CreateStart());
     }

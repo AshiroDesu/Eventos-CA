@@ -1,10 +1,9 @@
 import 'package:eventos_ca/modules/evento_module/domain/entities/evento_base.dart';
 import 'package:eventos_ca/modules/evento_module/domain/errors/errors.dart';
+import 'package:eventos_ca/modules/evento_module/presenter/evento/search_evento_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'evento_mobx.dart';
 import 'state/state.dart';
 
 class EventoPage extends StatefulWidget {
@@ -14,7 +13,8 @@ class EventoPage extends StatefulWidget {
   _EventoPageState createState() => _EventoPageState();
 }
 
-class _EventoPageState extends ModularState<EventoPage, EventoMobx> {
+class _EventoPageState
+    extends ModularState<EventoPage, EventoListValueNotifier> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +32,10 @@ class _EventoPageState extends ModularState<EventoPage, EventoMobx> {
               ),
             ),
             Expanded(
-              child: Observer(builder: (_) {
+              child: AnimatedBuilder(
+                  animation:controller.state
+                   builder: (context, child) {
                 var state = controller.state;
-
-                /* for(var item in) {
-print(item);
-}
-*/
 
                 if (state is SearchError) {
                   return Center(
@@ -49,7 +46,7 @@ print(item);
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is SuccessState) {
-                  return _buildList(state.list);
+                  return _buildList(SuccessState.list);
                 } else {
                   return Container(
                     child: Padding(
@@ -64,7 +61,7 @@ print(item);
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            Modular.to.navigate('/CreatePage');
+            Modular.to.pushNamed('/create');
           },
           child: Icon(Icons.add),
         ));

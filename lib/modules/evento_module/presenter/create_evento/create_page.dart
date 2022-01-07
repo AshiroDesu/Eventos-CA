@@ -16,7 +16,7 @@ class _CreatePageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Api Search'),
+        title: Text('Api Create'),
       ),
       body: Column(
         children: <Widget>[
@@ -45,7 +45,7 @@ class _CreatePageState
             },
           ),
           ElevatedButton(
-              onPressed: controller.setCreateText(controller.textSend.text),
+              onPressed: () => controller.makePost(controller.textSend.text),
               child: Text("Send"))
         ],
       ),

@@ -4,8 +4,8 @@ import 'package:eventos_ca/modules/evento_module/external/datasources/api/api_da
 import 'package:eventos_ca/modules/evento_module/infra/repositories/evento_repository_impl.dart';
 import 'package:eventos_ca/modules/evento_module/presenter/create_evento/create_evento_page_controller.dart';
 import 'package:eventos_ca/modules/evento_module/presenter/create_evento/create_page.dart';
-import 'package:eventos_ca/modules/evento_module/presenter/evento/evento_mobx.dart';
-import 'package:eventos_ca/modules/evento_module/presenter/evento/evento_page.dart';
+import 'package:eventos_ca/modules/evento_module/presenter/evento/search_evento_controller.dart';
+import 'package:eventos_ca/modules/evento_module/presenter/evento/search_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class EventoModule extends Module {
@@ -15,17 +15,14 @@ class EventoModule extends Module {
         Bind((i) => ApiDatasource(i())),
         Bind((i) => Dio()),
         Bind((i) => SearchEventoImpl(i())),
-        Bind((i) => EventoMobx(i())),
+        Bind((i) => EventoListValueNotifier(i())),
         Bind((i) => CreateEventoValueNotifier())
       ];
 
   @override
   List<ModularRoute> get routes => [
         //view route
-        ChildRoute(
-          '/',
-          child: (_, __) => EventoPage(),
-          children: [ChildRoute('/CreatePage', child: (_, __) => CreatePage())],
-        ),
+        ChildRoute('/', child: (_, __) => EventoPage()),
+        ChildRoute('/create', child: (_, __) => CreatePage()),
       ];
 }
